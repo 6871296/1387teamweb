@@ -131,7 +131,7 @@
 			if (dod !== dod2) {
 				alert("两次输入的密码不一致！");
 			} else {
-				if (d2 === 'null' || nad === '未登录') {
+				if (d2 === 'null' || nad === '未登录') {//1.这个时候还没有一个名叫d2的变量吧？2.如果输入的用户名是“未登录”就显示有这个号了，不太对吧？
 					alert('有这个号了！');
 				} else {
 					var d1 = JSON.parse(pt('update', nad + '_password', hashedPassword)); // 存储哈希后的密码
@@ -140,7 +140,9 @@
 					var d4 = d3['status'];
 					var d5 = JSON.parse(pt('update', nad + '_os', "这个人太懒了，没有个人简介。"));
 					var d6 = d5['status'];
-					if (d2 === 'success' && d4 == 'success' && d6 === 'success' && true/*d8 === 'success'*/) {
+					var d7 = JSON.parse(pt('update', 'counter', String(dodet)));
+					var d8 = d7['status'];
+					if (d2 === 'success' && d4 == 'success' && d6 === 'success' && d8 === 'success') {
 						alert('注册成功！请记住' + nad + '的密码：' + dod + '，他的ID号是：' + String(dodet));
 						window.localStorage.setItem('nowname', nad);
 					} else {
